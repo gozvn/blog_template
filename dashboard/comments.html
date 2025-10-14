@@ -107,6 +107,22 @@
                     flex-wrap: wrap;
                 }
             }
+            
+            /* Action column styling */
+            #commentsTable th:last-child,
+            #commentsTable td:last-child {
+                width: 180px;
+                min-width: 180px;
+                white-space: nowrap;
+            }
+            
+            #commentsTable td:last-child .btn {
+                margin-right: 2px;
+            }
+            
+            #commentsTable td:last-child .btn:last-child {
+                margin-right: 0;
+            }
         </style>
     </head>
     <body class="sb-nav-fixed">
@@ -208,23 +224,17 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <select class="form-select" id="statusFilter" onchange="filterComments()">
                                             <option value="">All Status</option>
                                             <option value="approved">Approved</option>
                                             <option value="spam">Spam</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-3">
-                                        <select class="form-select" id="postFilter" onchange="filterComments()">
-                                            <option value="">All Posts</option>
-                                            <option value="1">The Future of Web Development: Trends and Technologies to Watch in 2025</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <input type="date" class="form-control" id="dateFilter" onchange="filterComments()">
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <button class="btn btn-outline-secondary" onclick="clearFilters()">
                                             <i class="fas fa-times"></i> Clear Filters
                                         </button>
@@ -1314,10 +1324,9 @@
 
             function filterComments() {
                 const status = document.getElementById('statusFilter').value;
-                const post = document.getElementById('postFilter').value;
                 const date = document.getElementById('dateFilter').value;
                 
-                console.log('Filtering comments:', { status, post, date });
+                console.log('Filtering comments:', { status, date });
                 
                 // Get all table rows (excluding header)
                 const rows = document.querySelectorAll('#commentsTable tbody tr');
@@ -1334,15 +1343,6 @@
                         console.log('Row status:', rowStatus, 'Filter status:', status); // Debug log
                         
                         if (rowStatus !== status) {
-                            showRow = false;
-                        }
-                    }
-                    
-                    // Filter by post (if multiple posts exist in future)
-                    if (post) {
-                        const postLink = row.querySelector('td:nth-child(5) a');
-                        const rowPost = postLink ? postLink.textContent : '';
-                        if (!rowPost.includes('Web Development')) { // Simple check for now
                             showRow = false;
                         }
                     }
@@ -1387,7 +1387,6 @@
 
             function clearFilters() {
                 document.getElementById('statusFilter').value = '';
-                document.getElementById('postFilter').value = '';
                 document.getElementById('dateFilter').value = '';
                 
                 // Show all rows
