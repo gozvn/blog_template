@@ -32,7 +32,9 @@
 .object-cover {
     object-fit: cover;
 }
-
+.thumb_category img{
+    aspect-ratio: 3/2; width: 100%; object-fit: cover; border-radius: 0.5rem;
+}
 .object-fit-cover {
     object-fit: cover;
 }
