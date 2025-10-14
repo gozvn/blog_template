@@ -82,7 +82,7 @@ function initializeConfirmationDialogs() {
                            e.target : e.target.closest('[data-action="delete"]');
             
             const confirmMessage = element.getAttribute('data-confirm') || 
-                                 'Bạn có chắc chắn muốn xóa item này?';
+                                 'Are you sure you want to delete this item?';
             
             if (!confirm(confirmMessage)) {
                 e.preventDefault();
@@ -161,7 +161,7 @@ function saveFormData(form) {
     const formId = form.id || 'default-form';
     localStorage.setItem(`autosave-${formId}`, JSON.stringify(data));
     
-    showToast('Đã tự động lưu!', 'info', 1000);
+    showToast('Auto-saved!', 'info', 1000);
 }
 
 /**
@@ -182,7 +182,7 @@ function loadFormData(formId) {
                 }
             });
             
-            showToast('Đã khôi phục dữ liệu đã lưu!', 'info');
+            showToast('Restored saved data!', 'info');
         }
     }
 }

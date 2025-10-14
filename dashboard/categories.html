@@ -6,9 +6,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Quản lý Category - Dashboard</title>
+        <title>Category Management - Dashboard</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            .category-thumbnail {
+                transition: transform 0.2s ease-in-out;
+                cursor: pointer;
+            }
+            
+            .category-thumbnail:hover {
+                transform: scale(1.1);
+            }
+            
+            #addImagePreview, #editImagePreview {
+                margin-top: 10px;
+            }
+            
+            #addPreviewImg, #editPreviewImg {
+                transition: opacity 0.3s ease-in-out;
+            }
+            
+            .image-upload-area {
+                border: 2px dashed #ddd;
+                border-radius: 8px;
+                padding: 20px;
+                text-align: center;
+                transition: border-color 0.3s ease;
+            }
+            
+            .image-upload-area:hover {
+                border-color: #007bff;
+            }
+            
+            .image-upload-area.dragover {
+                border-color: #28a745;
+                background-color: #f8f9fa;
+            }
+        </style>
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -42,268 +77,188 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-                            
-                            <!-- Quản lý User -->
-                            <div class="sb-sidenav-menu-heading">Quản lý</div>
+                            <!-- User Management -->
+                            <div class="sb-sidenav-menu-heading">Main Menu</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                                Quản lý User
+                                User Management
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="users.html">Danh sách User</a>
-                                    <a class="nav-link" href="user-add.html">Thêm User</a>
+                                    <a class="nav-link" href="users.html">User List</a>
                                 </nav>
                             </div>
                             
-                            <!-- Quản lý Post -->
+                            <!-- Post Management -->
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePosts" aria-expanded="false" aria-controls="collapsePosts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-newspaper"></i></div>
-                                Quản lý Post
+                                Post Management
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePosts" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="posts.html">Danh sách Post</a>
-                                    <a class="nav-link" href="post-add.html">Thêm Post</a>
+                                    <a class="nav-link" href="posts.html">Post List</a>
+                                    <a class="nav-link" href="post-add.html">Add Post</a>
                                 </nav>
                             </div>
                             
-                            <!-- Quản lý Category -->
+                            <!-- Category Management -->
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCategories" aria-expanded="true" aria-controls="collapseCategories">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
-                                Quản lý Category
+                                Category Management
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse show" id="collapseCategories" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link active" href="categories.html">Danh sách Category</a>
-                                    <a class="nav-link" href="category-add.html">Thêm Category</a>
+                                    <a class="nav-link active" href="categories.html">Category List</a>
                                 </nav>
                             </div>
                             
-                            <!-- Quản lý Comment -->
+                            <!-- Comment Management -->
                             <a class="nav-link" href="comments.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
-                                Quản lý Comment
+                                Comment Management
                             </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Admin User
+                        John Doe
                     </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Quản lý Category</h1>
+                        <h1 class="mt-4">Category Management</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Danh sách Category</li>
+                            <li class="breadcrumb-item active">Category List</li>
                         </ol>
                         
-                        <div class="row">
-                            <div class="col-xl-8">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-tags me-1"></i>
-                                        Danh sách Category
-                                    </div>
-                                    <div class="card-body">
-                                        <table id="categoriesTable" class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Tên Category</th>
-                                                    <th>Slug</th>
-                                                    <th>Màu sắc</th>
-                                                    <th>Số bài viết</th>
-                                                    <th>Trạng thái</th>
-                                                    <th>Hành động</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Programming</td>
-                                                    <td>programming</td>
-                                                    <td><span class="badge bg-info text-white">●</span> #17a2b8</td>
-                                                    <td>15</td>
-                                                    <td><span class="badge bg-success">Active</span></td>
-                                                    <td>
-                                                        <button class="btn btn-sm btn-warning" onclick="editCategory(1)">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                        <button class="btn btn-sm btn-danger" onclick="deleteCategory(1)">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Database</td>
-                                                    <td>database</td>
-                                                    <td><span class="badge bg-secondary text-white">●</span> #6c757d</td>
-                                                    <td>8</td>
-                                                    <td><span class="badge bg-success">Active</span></td>
-                                                    <td>
-                                                        <button class="btn btn-sm btn-warning" onclick="editCategory(2)">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                        <button class="btn btn-sm btn-danger" onclick="deleteCategory(2)">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Security</td>
-                                                    <td>security</td>
-                                                    <td><span class="badge bg-danger text-white">●</span> #dc3545</td>
-                                                    <td>5</td>
-                                                    <td><span class="badge bg-success">Active</span></td>
-                                                    <td>
-                                                        <button class="btn btn-sm btn-warning" onclick="editCategory(3)">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                        <button class="btn btn-sm btn-danger" onclick="deleteCategory(3)">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>Web Development</td>
-                                                    <td>web-development</td>
-                                                    <td><span class="badge bg-primary text-white">●</span> #007bff</td>
-                                                    <td>12</td>
-                                                    <td><span class="badge bg-success">Active</span></td>
-                                                    <td>
-                                                        <button class="btn btn-sm btn-warning" onclick="editCategory(4)">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                        <button class="btn btn-sm btn-danger" onclick="deleteCategory(4)">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>Mobile Development</td>
-                                                    <td>mobile-development</td>
-                                                    <td><span class="badge bg-success text-white">●</span> #28a745</td>
-                                                    <td>6</td>
-                                                    <td><span class="badge bg-secondary">Inactive</span></td>
-                                                    <td>
-                                                        <button class="btn btn-sm btn-warning" onclick="editCategory(5)">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                        <button class="btn btn-sm btn-danger" onclick="deleteCategory(5)">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="fas fa-tags me-1"></i>
+                                    Category List
                                 </div>
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addModal">
+                                    <i class="fas fa-plus me-1"></i>Add Category
+                                </button>
                             </div>
-                            <div class="col-xl-4">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-plus me-1"></i>
-                                        <span id="formTitle">Thêm Category mới</span>
-                                    </div>
-                                    <div class="card-body">
-                                        <form id="categoryForm" onsubmit="submitCategoryForm(event)">
-                                            <input type="hidden" id="categoryId" value="">
-                                            
-                                            <div class="mb-3">
-                                                <label for="categoryName" class="form-label">Tên Category</label>
-                                                <input type="text" class="form-control" id="categoryName" required placeholder="Nhập tên category">
-                                            </div>
-                                            
-                                            <div class="mb-3">
-                                                <label for="categorySlug" class="form-label">Slug</label>
-                                                <input type="text" class="form-control" id="categorySlug" required placeholder="category-slug">
-                                                <small class="form-text text-muted">URL-friendly version (sẽ tự động tạo từ tên)</small>
-                                            </div>
-                                            
-                                            <div class="mb-3">
-                                                <label for="categoryDescription" class="form-label">Mô tả</label>
-                                                <textarea class="form-control" id="categoryDescription" rows="3" placeholder="Mô tả ngắn về category này"></textarea>
-                                            </div>
-                                            
-                                            <div class="mb-3">
-                                                <label for="categoryColor" class="form-label">Màu sắc</label>
-                                                <div class="row">
-                                                    <div class="col-8">
-                                                        <input type="color" class="form-control form-control-color" id="categoryColor" value="#007bff">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <input type="text" class="form-control" id="categoryColorHex" value="#007bff" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="mb-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="categoryActive" checked>
-                                                    <label class="form-check-label" for="categoryActive">
-                                                        Active (hiển thị công khai)
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="d-grid gap-2">
-                                                <button class="btn btn-primary" type="submit" id="submitBtn">
-                                                    <i class="fas fa-plus"></i> Tạo Category
+                            <div class="card-body">
+                                <table id="categoriesTable" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Thumbnail</th>
+                                            <th>Category Name</th>
+                                            <th>Slug</th>
+                                            <th>Post Count</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><img src="../img/no_img.jpg" alt="Technology" class="category-thumbnail" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;"></td>
+                                            <td>Technology</td>
+                                            <td>technology</td>
+                                            <td>25</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary" onclick="editCategory(1)">
+                                                    <i class="fas fa-edit"></i>
                                                 </button>
-                                                <button class="btn btn-secondary" type="button" onclick="resetForm()" id="resetBtn" style="display: none;">
-                                                    <i class="fas fa-times"></i> Hủy
+                                                <button class="btn btn-sm btn-danger" onclick="deleteCategory(1)">
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                
-                                <div class="card">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-pie me-1"></i>
-                                        Thống kê Category
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row text-center">
-                                            <div class="col-6">
-                                                <div class="border-end">
-                                                    <h4 class="text-primary">5</h4>
-                                                    <small class="text-muted">Tổng Categories</small>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <h4 class="text-success">4</h4>
-                                                <small class="text-muted">Active</small>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="small">
-                                            <strong>Categories phổ biến:</strong>
-                                            <ul class="list-unstyled mt-2">
-                                                <li>Programming (15 bài)</li>
-                                                <li>Web Development (12 bài)</li>
-                                                <li>Database (8 bài)</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td><img src="../img/no_img.jpg" alt="Design" class="category-thumbnail" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;"></td>
+                                            <td>Design</td>
+                                            <td>design</td>
+                                            <td>18</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary" onclick="editCategory(2)">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger" onclick="deleteCategory(2)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td><img src="../img/no_img.jpg" alt="Business" class="category-thumbnail" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;"></td>
+                                            <td>Business</td>
+                                            <td>business</td>
+                                            <td>12</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary" onclick="editCategory(3)">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger" onclick="deleteCategory(3)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td><img src="../img/no_img.jpg" alt="Lifestyle" class="category-thumbnail" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;"></td>
+                                            <td>Lifestyle</td>
+                                            <td>lifestyle</td>
+                                            <td>8</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary" onclick="editCategory(4)">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger" onclick="deleteCategory(4)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td><img src="../img/no_img.jpg" alt="Travel" class="category-thumbnail" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;"></td>
+                                            <td>Travel</td>
+                                            <td>travel</td>
+                                            <td>15</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary" onclick="editCategory(5)">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger" onclick="deleteCategory(5)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td><img src="../img/no_img.jpg" alt="Food & Cooking" class="category-thumbnail" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;"></td>
+                                            <td>Food & Cooking</td>
+                                            <td>food-cooking</td>
+                                            <td>10</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary" onclick="editCategory(6)">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger" onclick="deleteCategory(6)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -323,12 +278,153 @@
             </div>
         </div>
 
+        <!-- Add Category Modal -->
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">
+                            <i class="fas fa-plus me-2"></i>Add New Category
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addCategoryForm">
+                            <div class="mb-3">
+                                <label for="addCategoryName" class="form-label">Category Name</label>
+                                <input type="text" class="form-control" id="addCategoryName" required placeholder="Enter category name">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="addCategorySlug" class="form-label">Slug</label>
+                                <input type="text" class="form-control" id="addCategorySlug" required placeholder="category-slug">
+                                <small class="form-text text-muted">URL-friendly version (will be auto-generated from name)</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="addCategoryDescription" class="form-label">Description</label>
+                                <textarea class="form-control" id="addCategoryDescription" rows="3" placeholder="Short description about this category"></textarea>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="addCategoryImage" class="form-label">Feature Image</label>
+                                <input type="file" class="form-control" id="addCategoryImage" accept="image/*">
+                                <small class="form-text text-muted">Upload a feature image for this category (JPG, PNG, GIF)</small>
+                                <div class="mt-2" id="addImagePreview" style="display: none;">
+                                    <img id="addPreviewImg" src="" alt="Preview" style="max-width: 200px; max-height: 150px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="addCategoryActive" checked>
+                                    <label class="form-check-label" for="addCategoryActive">
+                                        Active (publicly visible)
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="saveAddBtn">
+                            <i class="fas fa-plus me-2"></i>Create Category
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Category Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">
+                            <i class="fas fa-edit me-2"></i>Edit Category
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editCategoryForm">
+                            <input type="hidden" id="editCategoryId" value="">
+                            
+                            <div class="mb-3">
+                                <label for="editCategoryName" class="form-label">Category Name</label>
+                                <input type="text" class="form-control" id="editCategoryName" required placeholder="Enter category name">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="editCategorySlug" class="form-label">Slug</label>
+                                <input type="text" class="form-control" id="editCategorySlug" required placeholder="category-slug">
+                                <small class="form-text text-muted">URL-friendly version (will be auto-generated from name)</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="editCategoryDescription" class="form-label">Description</label>
+                                <textarea class="form-control" id="editCategoryDescription" rows="3" placeholder="Short description about this category"></textarea>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="editCategoryImage" class="form-label">Feature Image</label>
+                                <input type="file" class="form-control" id="editCategoryImage" accept="image/*">
+                                <small class="form-text text-muted">Upload a new feature image (leave empty to keep current image)</small>
+                                <div class="mt-2" id="editImagePreview">
+                                    <img id="editPreviewImg" src="../img/no_img.jpg" alt="Current image" style="max-width: 200px; max-height: 150px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="editCategoryActive">
+                                    <label class="form-check-label" for="editCategoryActive">
+                                        Active (publicly visible)
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="saveEditBtn">
+                            <i class="fas fa-save me-2"></i>Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title text-danger" id="deleteModalLabel">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Delete Category
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-3">Are you sure you want to delete this category?</p>
+                        <div class="alert alert-warning mb-0">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Note:</strong> Posts in this category will be moved to "Uncategorized".
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                            <i class="fas fa-trash me-2"></i>Delete Category
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script>
-            let isEditMode = false;
-
             // Initialize DataTable
             window.addEventListener('DOMContentLoaded', event => {
                 const datatablesSimple = document.getElementById('categoriesTable');
@@ -336,135 +432,510 @@
                     new simpleDatatables.DataTable(datatablesSimple);
                 }
 
-                // Auto-generate slug from name
-                document.getElementById('categoryName').addEventListener('input', function(e) {
+                // Image preview functionality for add form
+                document.getElementById('addCategoryImage').addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    const preview = document.getElementById('addImagePreview');
+                    const previewImg = document.getElementById('addPreviewImg');
+                    
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            previewImg.src = e.target.result;
+                            preview.style.display = 'block';
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        preview.style.display = 'none';
+                    }
+                });
+
+                // Image preview functionality for edit form
+                document.getElementById('editCategoryImage').addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    const previewImg = document.getElementById('editPreviewImg');
+                    
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            previewImg.src = e.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                // Auto-generate slug from name for add form with validation
+                document.getElementById('addCategoryName').addEventListener('input', function(e) {
                     const name = e.target.value;
                     const slug = name.toLowerCase()
                         .replace(/[^\w\s-]/g, '') // Remove special characters
                         .replace(/\s+/g, '-')      // Replace spaces with hyphens
                         .replace(/-+/g, '-')       // Replace multiple hyphens with single
                         .trim();
-                    document.getElementById('categorySlug').value = slug;
+                    document.getElementById('addCategorySlug').value = slug;
+                    
+                    // Real-time validation
+                    if (name.trim()) {
+                        if (name.trim().length >= 2 && name.trim().length <= 50 && !isDuplicateName(name.trim())) {
+                            highlightField('addCategoryName', 'success');
+                        } else {
+                            highlightField('addCategoryName', 'error');
+                        }
+                    } else {
+                        document.getElementById('addCategoryName').classList.remove('is-valid', 'is-invalid');
+                    }
+                    
+                    // Validate slug
+                    if (slug) {
+                        if (slug.length >= 2 && /^[a-z0-9\-]+$/.test(slug) && !isDuplicateSlug(slug)) {
+                            highlightField('addCategorySlug', 'success');
+                        } else {
+                            highlightField('addCategorySlug', 'error');
+                        }
+                    }
                 });
 
-                // Color picker sync
-                document.getElementById('categoryColor').addEventListener('change', function(e) {
-                    document.getElementById('categoryColorHex').value = e.target.value;
+                // Real-time slug validation for add form
+                document.getElementById('addCategorySlug').addEventListener('input', function(e) {
+                    const slug = e.target.value;
+                    if (slug) {
+                        if (slug.length >= 2 && /^[a-z0-9\-]+$/.test(slug) && !isDuplicateSlug(slug)) {
+                            highlightField('addCategorySlug', 'success');
+                        } else {
+                            highlightField('addCategorySlug', 'error');
+                        }
+                    } else {
+                        e.target.classList.remove('is-valid', 'is-invalid');
+                    }
+                });
+
+                // Auto-generate slug from name for edit form with validation
+                document.getElementById('editCategoryName').addEventListener('input', function(e) {
+                    const name = e.target.value;
+                    const currentId = document.getElementById('editCategoryId').value;
+                    const slug = name.toLowerCase()
+                        .replace(/[^\w\s-]/g, '') // Remove special characters
+                        .replace(/\s+/g, '-')      // Replace spaces with hyphens
+                        .replace(/-+/g, '-')       // Replace multiple hyphens with single
+                        .trim();
+                    document.getElementById('editCategorySlug').value = slug;
+                    
+                    // Real-time validation
+                    if (name.trim()) {
+                        if (name.trim().length >= 2 && name.trim().length <= 50 && !isDuplicateName(name.trim(), currentId)) {
+                            highlightField('editCategoryName', 'success');
+                        } else {
+                            highlightField('editCategoryName', 'error');
+                        }
+                    } else {
+                        document.getElementById('editCategoryName').classList.remove('is-valid', 'is-invalid');
+                    }
+                    
+                    // Validate slug
+                    if (slug) {
+                        if (slug.length >= 2 && /^[a-z0-9\-]+$/.test(slug) && !isDuplicateSlug(slug, currentId)) {
+                            highlightField('editCategorySlug', 'success');
+                        } else {
+                            highlightField('editCategorySlug', 'error');
+                        }
+                    }
+                });
+
+                // Real-time slug validation for edit form
+                document.getElementById('editCategorySlug').addEventListener('input', function(e) {
+                    const slug = e.target.value;
+                    const currentId = document.getElementById('editCategoryId').value;
+                    if (slug) {
+                        if (slug.length >= 2 && /^[a-z0-9\-]+$/.test(slug) && !isDuplicateSlug(slug, currentId)) {
+                            highlightField('editCategorySlug', 'success');
+                        } else {
+                            highlightField('editCategorySlug', 'error');
+                        }
+                    } else {
+                        e.target.classList.remove('is-valid', 'is-invalid');
+                    }
+                });
+
+                // Handle add form save
+                const saveAddBtn = document.getElementById('saveAddBtn');
+                if (saveAddBtn) {
+                    saveAddBtn.addEventListener('click', function() {
+                        // Validate form
+                        const validation = validateAddForm();
+                        if (!validation.isValid) {
+                            showToast(validation.message, 'error');
+                            return;
+                        }
+
+                        const categoryData = {
+                            name: document.getElementById('addCategoryName').value.trim(),
+                            slug: document.getElementById('addCategorySlug').value.trim(),
+                            description: document.getElementById('addCategoryDescription').value.trim(),
+                            active: document.getElementById('addCategoryActive').checked,
+                            image: document.getElementById('addCategoryImage').files[0] || null
+                        };
+                        
+                        // Check for duplicate slug
+                        if (isDuplicateSlug(categoryData.slug)) {
+                            showToast('A category with this slug already exists. Please choose a different slug.', 'error');
+                            return;
+                        }
+                        
+                        // Here you would make an API call to create the category
+                        console.log('Creating category:', categoryData);
+                        
+                        // Hide the modal
+                        const addModal = bootstrap.Modal.getInstance(document.getElementById('addModal'));
+                        addModal.hide();
+                        
+                        // Clear form after successful submission
+                        clearAddForm();
+                        
+                        showToast('Category has been created successfully!', 'success');
+                        
+                        // Refresh the page or update the table
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1000);
+                    });
+                }
+
+                // Handle delete confirmation
+                const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+                if (confirmDeleteBtn) {
+                    confirmDeleteBtn.addEventListener('click', function() {
+                        const categoryId = window.categoryToDelete;
+                        
+                        // Here you would make an API call to delete the category
+                        console.log('Deleting category:', categoryId);
+                        
+                        // Hide the modal
+                        const deleteModal = bootstrap.Modal.getInstance(document.getElementById('deleteModal'));
+                        deleteModal.hide();
+                        
+                        showToast('Category has been deleted successfully!', 'success');
+                        
+                        // Refresh the page or remove the row
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1000);
+                    });
+                }
+
+                // Handle edit form save
+                const saveEditBtn = document.getElementById('saveEditBtn');
+                if (saveEditBtn) {
+                    saveEditBtn.addEventListener('click', function() {
+                        // Validate form
+                        const validation = validateEditForm();
+                        if (!validation.isValid) {
+                            showToast(validation.message, 'error');
+                            return;
+                        }
+
+                        const categoryData = {
+                            id: document.getElementById('editCategoryId').value,
+                            name: document.getElementById('editCategoryName').value.trim(),
+                            slug: document.getElementById('editCategorySlug').value.trim(),
+                            description: document.getElementById('editCategoryDescription').value.trim(),
+                            active: document.getElementById('editCategoryActive').checked,
+                            image: document.getElementById('editCategoryImage').files[0] || null
+                        };
+                        
+                        // Check for duplicate slug (excluding current category)
+                        if (isDuplicateSlug(categoryData.slug, categoryData.id)) {
+                            showToast('A category with this slug already exists. Please choose a different slug.', 'error');
+                            return;
+                        }
+                        
+                        // Here you would make an API call to update the category
+                        console.log('Updating category:', categoryData);
+                        
+                        // Hide the modal
+                        const editModal = bootstrap.Modal.getInstance(document.getElementById('editModal'));
+                        editModal.hide();
+                        
+                        showToast('Category has been updated successfully!', 'success');
+                        
+                        // Refresh the page or update the row
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1000);
+                    });
+                }
+
+                // Clear validation when modals are opened
+                document.getElementById('addModal').addEventListener('shown.bs.modal', function() {
+                    clearAddForm();
+                });
+
+                document.getElementById('editModal').addEventListener('shown.bs.modal', function() {
+                    clearValidationStyles('edit');
                 });
             });
+
+            // Validation functions
+            function validateAddForm() {
+                const name = document.getElementById('addCategoryName').value.trim();
+                const slug = document.getElementById('addCategorySlug').value.trim();
+                
+                // Clear previous validation styles
+                clearValidationStyles('add');
+                
+                if (!name) {
+                    highlightField('addCategoryName', 'error');
+                    return { isValid: false, message: 'Category name is required.' };
+                }
+                
+                if (name.length < 2) {
+                    highlightField('addCategoryName', 'error');
+                    return { isValid: false, message: 'Category name must be at least 2 characters long.' };
+                }
+                
+                if (name.length > 50) {
+                    highlightField('addCategoryName', 'error');
+                    return { isValid: false, message: 'Category name must not exceed 50 characters.' };
+                }
+                
+                if (!slug) {
+                    highlightField('addCategorySlug', 'error');
+                    return { isValid: false, message: 'Category slug is required.' };
+                }
+                
+                if (!/^[a-z0-9\-]+$/.test(slug)) {
+                    highlightField('addCategorySlug', 'error');
+                    return { isValid: false, message: 'Slug can only contain lowercase letters, numbers, and hyphens.' };
+                }
+                
+                if (slug.length < 2) {
+                    highlightField('addCategorySlug', 'error');
+                    return { isValid: false, message: 'Slug must be at least 2 characters long.' };
+                }
+                
+                if (isDuplicateName(name)) {
+                    highlightField('addCategoryName', 'error');
+                    return { isValid: false, message: 'A category with this name already exists.' };
+                }
+                
+                return { isValid: true };
+            }
+            
+            function validateEditForm() {
+                const name = document.getElementById('editCategoryName').value.trim();
+                const slug = document.getElementById('editCategorySlug').value.trim();
+                const currentId = document.getElementById('editCategoryId').value;
+                
+                // Clear previous validation styles
+                clearValidationStyles('edit');
+                
+                if (!name) {
+                    highlightField('editCategoryName', 'error');
+                    return { isValid: false, message: 'Category name is required.' };
+                }
+                
+                if (name.length < 2) {
+                    highlightField('editCategoryName', 'error');
+                    return { isValid: false, message: 'Category name must be at least 2 characters long.' };
+                }
+                
+                if (name.length > 50) {
+                    highlightField('editCategoryName', 'error');
+                    return { isValid: false, message: 'Category name must not exceed 50 characters.' };
+                }
+                
+                if (!slug) {
+                    highlightField('editCategorySlug', 'error');
+                    return { isValid: false, message: 'Category slug is required.' };
+                }
+                
+                if (!/^[a-z0-9\-]+$/.test(slug)) {
+                    highlightField('editCategorySlug', 'error');
+                    return { isValid: false, message: 'Slug can only contain lowercase letters, numbers, and hyphens.' };
+                }
+                
+                if (slug.length < 2) {
+                    highlightField('editCategorySlug', 'error');
+                    return { isValid: false, message: 'Slug must be at least 2 characters long.' };
+                }
+                
+                if (isDuplicateName(name, currentId)) {
+                    highlightField('editCategoryName', 'error');
+                    return { isValid: false, message: 'A category with this name already exists.' };
+                }
+                
+                return { isValid: true };
+            }
+            
+            function isDuplicateName(name, excludeId = null) {
+                const existingNames = ['Technology', 'Design', 'Business', 'Lifestyle', 'Travel', 'Food & Cooking'];
+                const currentCategory = excludeId ? categories[excludeId] : null;
+                
+                return existingNames.some(existingName => 
+                    existingName.toLowerCase() === name.toLowerCase() && 
+                    (!currentCategory || currentCategory.name.toLowerCase() !== name.toLowerCase())
+                );
+            }
+            
+            function isDuplicateSlug(slug, excludeId = null) {
+                const existingSlugs = ['technology', 'design', 'business', 'lifestyle', 'travel', 'food-cooking'];
+                const currentCategory = excludeId ? categories[excludeId] : null;
+                
+                return existingSlugs.some(existingSlug => 
+                    existingSlug === slug && 
+                    (!currentCategory || currentCategory.slug !== slug)
+                );
+            }
+            
+            function highlightField(fieldId, type) {
+                const field = document.getElementById(fieldId);
+                if (field) {
+                    field.classList.remove('is-valid', 'is-invalid');
+                    field.classList.add(type === 'error' ? 'is-invalid' : 'is-valid');
+                }
+            }
+            
+            function clearValidationStyles(formType) {
+                const prefix = formType === 'add' ? 'add' : 'edit';
+                const fields = ['CategoryName', 'CategorySlug', 'CategoryDescription'];
+                
+                fields.forEach(field => {
+                    const element = document.getElementById(prefix + field);
+                    if (element) {
+                        element.classList.remove('is-valid', 'is-invalid');
+                    }
+                });
+            }
+            
+            function clearAddForm() {
+                document.getElementById('addCategoryName').value = '';
+                document.getElementById('addCategorySlug').value = '';
+                document.getElementById('addCategoryDescription').value = '';
+                document.getElementById('addCategoryActive').checked = true;
+                document.getElementById('addCategoryImage').value = '';
+                document.getElementById('addImagePreview').style.display = 'none';
+                clearValidationStyles('add');
+            }
 
             // Sample categories data
             const categories = {
                 1: {
-                    name: 'Programming',
-                    slug: 'programming',
-                    description: 'All things related to programming and coding',
-                    color: '#17a2b8',
-                    active: true
+                    name: 'Technology',
+                    slug: 'technology',
+                    description: 'Latest tech trends, gadgets, and software reviews',
+                    active: true,
+                    image: '../img/no_img.jpg'
                 },
                 2: {
-                    name: 'Database',
-                    slug: 'database',
-                    description: 'Database design, optimization, and management',
-                    color: '#6c757d',
-                    active: true
+                    name: 'Design',
+                    slug: 'design',
+                    description: 'UI/UX design, graphic design, and creative inspiration',
+                    active: true,
+                    image: '../img/no_img.jpg'
                 },
                 3: {
-                    name: 'Security',
-                    slug: 'security',
-                    description: 'Cybersecurity and application security',
-                    color: '#dc3545',
-                    active: true
+                    name: 'Business',
+                    slug: 'business',
+                    description: 'Entrepreneurship, startups, and business strategies',
+                    active: true,
+                    image: '../img/no_img.jpg'
                 },
                 4: {
-                    name: 'Web Development',
-                    slug: 'web-development',
-                    description: 'Frontend and backend web development',
-                    color: '#007bff',
-                    active: true
+                    name: 'Lifestyle',
+                    slug: 'lifestyle',
+                    description: 'Health, wellness, productivity, and personal development',
+                    active: true,
+                    image: '../img/no_img.jpg'
                 },
                 5: {
-                    name: 'Mobile Development',
-                    slug: 'mobile-development',
-                    description: 'iOS, Android, and cross-platform mobile development',
-                    color: '#28a745',
-                    active: false
+                    name: 'Travel',
+                    slug: 'travel',
+                    description: 'Travel guides, destinations, and adventure stories',
+                    active: true,
+                    image: '../img/no_img.jpg'
+                },
+                6: {
+                    name: 'Food & Cooking',
+                    slug: 'food-cooking',
+                    description: 'Recipes, cooking tips, and culinary experiences',
+                    active: true,
+                    image: '../img/no_img.jpg'
                 }
             };
 
             function editCategory(categoryId) {
                 const category = categories[categoryId];
                 if (category) {
-                    isEditMode = true;
+                    // Fill the edit modal form
+                    document.getElementById('editCategoryId').value = categoryId;
+                    document.getElementById('editCategoryName').value = category.name;
+                    document.getElementById('editCategorySlug').value = category.slug;
+                    document.getElementById('editCategoryDescription').value = category.description;
+                    document.getElementById('editCategoryActive').checked = category.active;
                     
-                    // Update form UI
-                    document.getElementById('formTitle').textContent = 'Chỉnh sửa Category';
-                    document.getElementById('submitBtn').innerHTML = '<i class="fas fa-save"></i> Cập nhật Category';
-                    document.getElementById('resetBtn').style.display = 'block';
+                    // Show current image
+                    const editPreviewImg = document.getElementById('editPreviewImg');
+                    editPreviewImg.src = category.image || '../img/no_img.jpg';
                     
-                    // Fill form
-                    document.getElementById('categoryId').value = categoryId;
-                    document.getElementById('categoryName').value = category.name;
-                    document.getElementById('categorySlug').value = category.slug;
-                    document.getElementById('categoryDescription').value = category.description;
-                    document.getElementById('categoryColor').value = category.color;
-                    document.getElementById('categoryColorHex').value = category.color;
-                    document.getElementById('categoryActive').checked = category.active;
-                    
-                    // Scroll to form
-                    document.getElementById('categoryForm').scrollIntoView({ behavior: 'smooth' });
+                    // Show the edit modal
+                    const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+                    editModal.show();
                 }
             }
 
             function deleteCategory(categoryId) {
-                const category = categories[categoryId];
-                if (category && confirm(`Bạn có chắc chắn muốn xóa category "${category.name}"?\n\nLưu ý: Các bài viết trong category này sẽ được chuyển sang "Uncategorized".`)) {
-                    // Here you would normally send AJAX request to delete
-                    console.log('Deleting category:', categoryId);
-                    alert('Category đã được xóa thành công!');
-                    location.reload();
-                }
+                // Store the category ID for deletion
+                window.categoryToDelete = categoryId;
+                
+                // Show the delete confirmation modal
+                const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+                deleteModal.show();
             }
 
-            function submitCategoryForm(event) {
-                event.preventDefault();
+            // Toast notification function with validation support
+            function showToast(message, type = 'success') {
+                let bgClass, iconClass;
                 
-                const categoryData = {
-                    id: document.getElementById('categoryId').value,
-                    name: document.getElementById('categoryName').value,
-                    slug: document.getElementById('categorySlug').value,
-                    description: document.getElementById('categoryDescription').value,
-                    color: document.getElementById('categoryColor').value,
-                    active: document.getElementById('categoryActive').checked
-                };
-                
-                // Here you would normally send AJAX request to save data
-                console.log('Saving category:', categoryData);
-                
-                if (isEditMode) {
-                    alert('Category đã được cập nhật thành công!');
-                } else {
-                    alert('Category đã được tạo thành công!');
+                switch(type) {
+                    case 'error':
+                        bgClass = 'bg-danger';
+                        iconClass = 'fas fa-exclamation-circle';
+                        break;
+                    case 'warning':
+                        bgClass = 'bg-warning';
+                        iconClass = 'fas fa-exclamation-triangle';
+                        break;
+                    case 'info':
+                        bgClass = 'bg-info';
+                        iconClass = 'fas fa-info-circle';
+                        break;
+                    default:
+                        bgClass = 'bg-success';
+                        iconClass = 'fas fa-check-circle';
                 }
                 
-                resetForm();
-                location.reload();
-            }
-
-            function resetForm() {
-                isEditMode = false;
+                // Create toast element
+                const toastHtml = `
+                    <div class="toast align-items-center text-white ${bgClass} border-0" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; top: 20px; right: 20px; z-index: 1055;">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                <i class="${iconClass} me-2"></i>${message}
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                `;
                 
-                // Reset form UI
-                document.getElementById('formTitle').textContent = 'Thêm Category mới';
-                document.getElementById('submitBtn').innerHTML = '<i class="fas fa-plus"></i> Tạo Category';
-                document.getElementById('resetBtn').style.display = 'none';
+                document.body.insertAdjacentHTML('beforeend', toastHtml);
+                const toastElement = document.querySelector('.toast:last-child');
+                const toast = new bootstrap.Toast(toastElement, {
+                    delay: type === 'error' ? 5000 : 3000 // Show errors longer
+                });
+                toast.show();
                 
-                // Clear form
-                document.getElementById('categoryForm').reset();
-                document.getElementById('categoryId').value = '';
-                document.getElementById('categoryColor').value = '#007bff';
-                document.getElementById('categoryColorHex').value = '#007bff';
-                document.getElementById('categoryActive').checked = true;
+                // Remove toast element after it's hidden
+                toastElement.addEventListener('hidden.bs.toast', function() {
+                    toastElement.remove();
+                });
             }
         </script>
     </body>
