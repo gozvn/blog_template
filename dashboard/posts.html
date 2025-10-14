@@ -106,7 +106,15 @@
                 color: #6c757d;
                 font-size: 0.875rem;
             }
-            
+
+             /* Action column styling */
+            #postsTable th:last-child,
+            #postsTable td:last-child {
+                width: 180px;
+                min-width: 180px;
+                white-space: nowrap;
+            }
+
             /* Responsive adjustments */
             @media (max-width: 768px) {
                 .dataTable-wrapper .dataTable-top,
@@ -243,9 +251,9 @@
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
-                                                <td>Getting Started with Python Programming</td>
+                                                <td>The Future of Web Development/td>
                                                 <td><span class="badge bg-info">Technology</span></td>
-                                                <td>admin@example.com</td>
+                                                <td>john.doe@example.com</td>
                                                 <td><span class="badge bg-primary">EN</span></td>
                                                 <td>2023-10-01</td>
                                                 <td><span class="badge bg-success">Published</span></td>
@@ -325,7 +333,7 @@
                                                 <td>5</td>
                                                 <td>Web Application Security</td>
                                                 <td><span class="badge bg-info">Technology</span></td>
-                                                <td>admin@example.com</td>
+                                                <td>john.doe@example.com</td>
                                                 <td><span class="badge bg-primary">EN</span></td>
                                                 <td>2023-10-12</td>
                                                 <td><span class="badge bg-success">Published</span></td>
@@ -669,11 +677,11 @@
 
             // Sample posts data
             const posts = {
-                1: { title: 'Getting Started with Python Programming', category: 'Technology', author: 'admin@example.com', language: 'EN', createdDate: '2023-10-01', status: 'Published', content: 'Python is a great language for beginners...' },
+                1: { title: 'The Future of Web Development', category: 'Technology', author: 'john.doe@example.com', language: 'EN', createdDate: '2023-10-01', status: 'Published', content: 'Web development continues to evolve at a rapid pace, with new technologies and frameworks emerging constantly. As we move through 2025...' },
                 2: { title: 'JavaScript ES6 Features', category: 'Technology', author: 'editor@example.com', language: 'EN', createdDate: '2023-10-05', status: 'Draft', content: 'ES6 introduced many new features to JavaScript...' },
                 3: { title: 'MySQL Database Optimization', category: 'Technology', author: 'author@example.com', language: 'EN', createdDate: '2023-10-08', status: 'Published', content: 'Database optimization is crucial for performance...' },
                 4: { title: 'React Hooks Tutorial', category: 'Technology', author: 'editor@example.com', language: 'EN', createdDate: '2023-10-10', status: 'Pending', content: 'React Hooks changed the way we write React components...' },
-                5: { title: 'Web Application Security', category: 'Technology', author: 'admin@example.com', language: 'EN', createdDate: '2023-10-12', status: 'Published', content: 'Security is a critical aspect of web development...' }
+                5: { title: 'Web Application Security', category: 'Technology', author: 'john.doe@example.com', language: 'EN', createdDate: '2023-10-12', status: 'Published', content: 'Security is a critical aspect of web development...' }
             };
 
             let currentPostId = null;
