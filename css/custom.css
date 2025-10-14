@@ -55,10 +55,6 @@
     transition: transform 0.3s ease;
 }
 
-.card:hover img {
-    transform: scale(1.05);
-}
-
 /* Recent posts link styles */
 .recent-post-link {
     transition: all 0.3s ease;
