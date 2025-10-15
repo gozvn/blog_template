@@ -51,6 +51,18 @@
                 <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
               </form>
               
+              <!-- Language selector for large screens only -->
+              <div class="dropdown me-3 d-none d-lg-block">
+                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-globe me-2"></i>
+                  <span>EN</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" data-lang="en">🇺🇸 English</a></li>
+                  <li><a class="dropdown-item" href="#" data-lang="vn">🇻🇳 Vietnamese</a></li>
+                </ul>
+              </div>
+              
               <!-- User dropdown for large screens only -->
               <div class="dropdown text-end me-3 d-none d-lg-block">
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -140,6 +152,22 @@
           </button>
         </form>
         
+        <!-- Language selector in offcanvas -->
+        <div class="mb-4">
+          <h6 class="text-muted mb-3">
+            <i class="fa fa-globe me-2"></i>Language
+          </h6>
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle w-100 d-flex justify-content-between align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span>🇺🇸 English</span>
+            </button>
+            <ul class="dropdown-menu w-100">
+              <li><a class="dropdown-item" href="#" data-lang="en">🇺🇸 English</a></li>
+              <li><a class="dropdown-item" href="#" data-lang="vn">🇻🇳 Vietnamese</a></li>
+            </ul>
+          </div>
+        </div>
+        
         <!-- User Actions -->
         <div class="mt-auto">
           <hr class="mb-3">
@@ -172,10 +200,10 @@
             <!-- Technology Category -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 shadow-sm border-0 category-card">
-                    <div class="card-body text-center p-4">
-                        <div class="category-icon mb-3">
+                    <div class="category-icon mb-3">
                             <img src="img/no_img.jpg" alt="" style="aspect-ratio: 3/2; width: 100%; object-fit: cover; border-radius: 0.5rem;">
-                        </div>
+                    </div>
+                    <div class="card-body text-center p-1">                       
                         <h5 class="card-title fw-bold">Technology</h5>
                         <p class="card-text text-muted">Latest trends in web development, AI, and software engineering</p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
@@ -189,10 +217,11 @@
             <!-- Design Category -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 shadow-sm border-0 category-card">
-                    <div class="card-body text-center p-4">
-                        <div class="category-icon mb-3">
+                    <div class="category-icon mb-3">
                             <img src="img/no_img.jpg" alt="" style="aspect-ratio: 3/2; width: 100%; object-fit: cover; border-radius: 0.5rem;">
-                        </div>
+                    </div>
+                    <div class="card-body text-center p-1">
+
                         <h5 class="card-title fw-bold">Design</h5>
                         <p class="card-text text-muted">UI/UX design principles, graphic design, and creative inspiration</p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
@@ -206,10 +235,11 @@
             <!-- Business Category -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 shadow-sm border-0 category-card">
-                    <div class="card-body text-center p-4">
                         <div class="category-icon mb-3">
                             <img src="img/no_img.jpg" alt="" style="aspect-ratio: 3/2; width: 100%; object-fit: cover; border-radius: 0.5rem;">
                         </div>
+                    <div class="card-body text-center p-1">
+                        
                         <h5 class="card-title fw-bold">Business</h5>
                         <p class="card-text text-muted">Entrepreneurship, marketing strategies</p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
@@ -223,10 +253,11 @@
             <!-- Lifestyle Category -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 shadow-sm border-0 category-card">
-                    <div class="card-body text-center p-4">
-                        <div class="category-icon mb-3">
+                    <div class="category-icon mb-3">
                             <img src="img/no_img.jpg" alt="" style="aspect-ratio: 3/2; width: 100%; object-fit: cover; border-radius: 0.5rem;">
                         </div>
+                    <div class="card-body text-center p-1">
+                        
                         <h5 class="card-title fw-bold">Lifestyle</h5>
                         <p class="card-text text-muted">Health, wellness, productivity, and personal development</p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
@@ -240,10 +271,11 @@
             <!-- Travel Category -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 shadow-sm border-0 category-card">
-                    <div class="card-body text-center p-4">
-                        <div class="category-icon mb-3">
+                       <div class="category-icon mb-3">
                             <img src="img/no_img.jpg" alt="" style="aspect-ratio: 3/2; width: 100%; object-fit: cover; border-radius: 0.5rem;">
                         </div>
+                    <div class="card-body text-center p-1">
+
                         <h5 class="card-title fw-bold">Travel</h5>
                         <p class="card-text text-muted">Travel guides, tips, and adventure stories from around the world</p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
@@ -257,10 +289,11 @@
             <!-- Food Category -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 shadow-sm border-0 category-card">
-                    <div class="card-body text-center p-4">
-                        <div class="category-icon mb-3">
+                                          <div class="category-icon mb-3">
                             <img src="img/no_img.jpg" alt="" style="aspect-ratio: 3/2; width: 100%; object-fit: cover; border-radius: 0.5rem;">
                         </div>
+                    <div class="card-body text-center p-1">
+
                         <h5 class="card-title fw-bold">Food & Cooking</h5>
                         <p class="card-text text-muted">Recipes, cooking tips, and culinary adventures</p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
@@ -321,5 +354,57 @@
 
     <!-- Bootstrap JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Language Selector Script -->
+    <script>
+        // Language selector functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageLinks = document.querySelectorAll('[data-lang]');
+            const currentLangDisplay = document.querySelector('.dropdown-toggle span');
+            const mobileLangButton = document.querySelector('.offcanvas .dropdown-toggle span');
+            
+            // Language options with flags and names
+            const languages = {
+                'en': '🇺🇸 English',
+                'vn': '🇻🇳 Vietnamese'
+            };
+            
+            // Get saved language or default to English
+            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+            updateLanguageDisplay(savedLang);
+            
+            // Add click event listeners to language links
+            languageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const selectedLang = this.getAttribute('data-lang');
+                    
+                    // Save to localStorage
+                    localStorage.setItem('selectedLanguage', selectedLang);
+                    
+                    // Update display
+                    updateLanguageDisplay(selectedLang);
+                    
+                    // Here you could add logic to actually change the language
+                    // For example, redirect to a different URL or reload with language parameter
+                    console.log('Language changed to:', selectedLang);
+                });
+            });
+            
+            function updateLanguageDisplay(langCode) {
+                const langText = languages[langCode] || languages['en'];
+                
+                // Update desktop display
+                if (currentLangDisplay) {
+                    currentLangDisplay.textContent = langText.split(' ')[1]; // Just the language name
+                }
+                
+                // Update mobile display
+                if (mobileLangButton) {
+                    mobileLangButton.textContent = langText;
+                }
+            }
+        });
+    </script>
 </body>
 </html>
