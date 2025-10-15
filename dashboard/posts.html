@@ -187,7 +187,6 @@
                             <div class="collapse show" id="collapsePosts" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link active" href="posts.html">Post List</a>
-                                    <a class="nav-link" href="post-add.html">Add Post</a>
                                 </nav>
                             </div>
                             
@@ -225,13 +224,60 @@
                             <li class="breadcrumb-item active">Post List</li>
                         </ol>
                         
+                        <!-- Filter Section -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-filter me-1"></i>
+                                Filter Posts
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="form-label">Language</label>
+                                        <select class="form-select" id="languageFilter" onchange="filterPosts()">
+                                            <option value="">All Languages</option>
+                                            <option value="EN">🇺🇸 English</option>
+                                            <option value="VI">🇻🇳 Vietnamese</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label">Status</label>
+                                        <select class="form-select" id="statusFilter" onchange="filterPosts()">
+                                            <option value="">All Status</option>
+                                            <option value="Published">Published</option>
+                                            <option value="Draft">Draft</option>
+                                            <option value="Pending">Pending</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label">Category</label>
+                                        <select class="form-select" id="categoryFilter" onchange="filterPosts()">
+                                            <option value="">All Categories</option>
+                                            <option value="Technology">Technology</option>
+                                            <option value="Design">Design</option>
+                                            <option value="Business">Business</option>
+                                            <option value="Lifestyle">Lifestyle</option>
+                                            <option value="Travel">Travel</option>
+                                            <option value="Food & Cooking">Food & Cooking</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label">Actions</label>
+                                        <div class="d-grid">
+                                            <button class="btn btn-outline-secondary" onclick="clearFilters()">
+                                                <i class="fas fa-times"></i> Clear Filters
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-newspaper me-1"></i>
                                 Post List
-                                <a href="post-add.html" class="btn btn-primary btn-sm float-end">
-                                    <i class="fas fa-plus"></i> Add Post
-                                </a>
+
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -549,6 +595,86 @@
                                                     </button>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td>16</td>
+                                                <td>Hướng dẫn học lập trình</td>
+                                                <td>Technology</td>
+                                                <td>nguyen.van.a@example.com</td>
+                                                <td><span class="badge bg-success">VI</span></td>
+                                                <td>2023-11-03</td>
+                                                <td><span class="badge bg-success">Published</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="viewPost(16)" title="View">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-primary" onclick="editPost(16)" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-danger" onclick="deletePost(16)" title="Delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>17</td>
+                                                <td>Xu hướng thiết kế web 2024</td>
+                                                <td>Design</td>
+                                                <td>tran.thi.b@example.com</td>
+                                                <td><span class="badge bg-success">VI</span></td>
+                                                <td>2023-11-05</td>
+                                                <td><span class="badge bg-warning">Draft</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="viewPost(17)" title="View">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-primary" onclick="editPost(17)" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-danger" onclick="deletePost(17)" title="Delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>18</td>
+                                                <td>Khởi nghiệp với công nghệ</td>
+                                                <td>Business</td>
+                                                <td>le.van.c@example.com</td>
+                                                <td><span class="badge bg-success">VI</span></td>
+                                                <td>2023-11-07</td>
+                                                <td><span class="badge bg-success">Published</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="viewPost(18)" title="View">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-primary" onclick="editPost(18)" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-danger" onclick="deletePost(18)" title="Delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>19</td>
+                                                <td>Du lịch Việt Nam 2024</td>
+                                                <td>Travel</td>
+                                                <td>pham.thi.d@example.com</td>
+                                                <td><span class="badge bg-success">VI</span></td>
+                                                <td>2023-11-09</td>
+                                                <td><span class="badge bg-secondary">Pending</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" onclick="viewPost(19)" title="View">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-primary" onclick="editPost(19)" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-danger" onclick="deletePost(19)" title="Delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -623,11 +749,13 @@
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script>
+            let dataTable; // Store DataTable instance
+            
             // Initialize DataTable
             window.addEventListener('DOMContentLoaded', event => {
                 const datatablesSimple = document.getElementById('postsTable');
                 if (datatablesSimple) {
-                    new simpleDatatables.DataTable(datatablesSimple, {
+                    dataTable = new simpleDatatables.DataTable(datatablesSimple, {
                         perPageSelect: [5, 10, 15, 25, 50, ["All", -1]],
                         perPage: 10,
                         searchable: true,
@@ -650,7 +778,25 @@
                             bottom: "{info}{pager}"
                         }
                     });
+                    console.log('DataTable initialized:', dataTable);
                 }
+
+                // Setup filter event listeners
+                const languageFilter = document.getElementById('languageFilter');
+                const statusFilter = document.getElementById('statusFilter');
+                const categoryFilter = document.getElementById('categoryFilter');
+                
+                if (languageFilter) {
+                    languageFilter.addEventListener('change', filterPosts);
+                }
+                if (statusFilter) {
+                    statusFilter.addEventListener('change', filterPosts);
+                }
+                if (categoryFilter) {
+                    categoryFilter.addEventListener('change', filterPosts);
+                }
+                
+                console.log('Filter event listeners attached');
 
                 // Handle delete confirmation
                 const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
@@ -771,6 +917,178 @@
                 toastElement.addEventListener('hidden.bs.toast', function() {
                     toastElement.remove();
                 });
+            }
+
+            // Filter Posts Function - Direct DOM approach that works with DataTables
+            function filterPosts() {
+                const language = document.getElementById('languageFilter').value;
+                const status = document.getElementById('statusFilter').value;
+                const category = document.getElementById('categoryFilter').value;
+
+                console.log('Filtering posts:', { language, status, category });
+
+                // If no filters selected, show all rows
+                if (!language && !status && !category) {
+                    clearFilters();
+                    return;
+                }
+
+                // We need to work with the actual DataTable wrapper
+                // DataTables wraps the table, so we need to find the wrapper
+                const tableWrapper = document.querySelector('.dataTable-wrapper');
+                const table = tableWrapper ? tableWrapper.querySelector('table') : document.getElementById('postsTable');
+                
+                if (!table) {
+                    console.error('Table not found');
+                    return;
+                }
+
+                const rows = table.querySelectorAll('tbody tr');
+                console.log('Total rows found:', rows.length);
+
+                let visibleRows = 0;
+                let matchingRows = [];
+
+                rows.forEach((row, index) => {
+                    let showRow = true;
+
+                    // Skip if not enough cells
+                    if (row.cells.length < 7) {
+                        return;
+                    }
+
+                    // Filter by language - column 4 (Language column, 0-indexed)
+                    if (language) {
+                        const languageCell = row.cells[4];
+                        const languageBadge = languageCell ? languageCell.querySelector('.badge') : null;
+                        const rowLanguage = languageBadge ? languageBadge.textContent.trim() : '';
+                        console.log(`Row ${index}: Language = "${rowLanguage}", Filter = "${language}"`);
+                        if (rowLanguage !== language) {
+                            showRow = false;
+                        }
+                    }
+
+                    // Filter by status - column 6 (Status column, 0-indexed)
+                    if (status && showRow) {
+                        const statusCell = row.cells[6];
+                        const statusBadge = statusCell ? statusCell.querySelector('.badge') : null;
+                        const rowStatus = statusBadge ? statusBadge.textContent.trim() : '';
+                        console.log(`Row ${index}: Status = "${rowStatus}", Filter = "${status}"`);
+                        if (rowStatus !== status) {
+                            showRow = false;
+                        }
+                    }
+
+                    // Filter by category - column 2 (Category column, 0-indexed)
+                    if (category && showRow) {
+                        const categoryCell = row.cells[2];
+                        const rowCategory = categoryCell ? categoryCell.textContent.trim() : '';
+                        console.log(`Row ${index}: Category = "${rowCategory}", Filter = "${category}"`);
+                        if (rowCategory !== category) {
+                            showRow = false;
+                        }
+                    }
+
+                    // Apply visibility
+                    if (showRow) {
+                        row.style.display = '';
+                        visibleRows++;
+                        matchingRows.push(row);
+                        console.log(`Row ${index}: SHOWING`);
+                    } else {
+                        row.style.display = 'none';
+                        console.log(`Row ${index}: HIDING`);
+                    }
+                });
+
+                console.log(`Visible rows: ${visibleRows} of ${rows.length}`);
+                
+                // Update the DataTable info display manually
+                updateDataTableInfo(visibleRows, rows.length);
+                
+                let filterDescriptions = [];
+                if (language) filterDescriptions.push(`Language: ${language}`);
+                if (status) filterDescriptions.push(`Status: ${status}`);
+                if (category) filterDescriptions.push(`Category: ${category}`);
+                
+                updateFilterResults(filterDescriptions.join(', '), visibleRows, rows.length);
+            }
+
+            // Clear All Filters Function
+            function clearFilters() {
+                console.log('Clearing all filters');
+                
+                // Find all table rows and show them
+                const tableWrapper = document.querySelector('.dataTable-wrapper');
+                const table = tableWrapper ? tableWrapper.querySelector('table') : document.getElementById('postsTable');
+                
+                if (table) {
+                    const rows = table.querySelectorAll('tbody tr');
+                    rows.forEach(row => {
+                        row.style.display = '';
+                    });
+                    
+                    updateDataTableInfo(rows.length, rows.length);
+                    updateFilterResults('all', rows.length, rows.length);
+                }
+            }
+
+            // Update DataTable info display
+            function updateDataTableInfo(visible, total) {
+                const infoElement = document.querySelector('.dataTable-info');
+                if (infoElement) {
+                    if (visible === total) {
+                        infoElement.textContent = `Showing ${total} posts`;
+                    } else {
+                        infoElement.textContent = `Showing ${visible} of ${total} posts (filtered)`;
+                    }
+                }
+            }
+
+            // Update Filter Results Counter
+            function updateFilterResults(filterType, visible, total) {
+                let resultText = '';
+                
+                if (filterType === 'all') {
+                    resultText = `Showing all ${total} posts`;
+                } else {
+                    resultText = `${filterType} - ${visible} of ${total} posts`;
+                }
+                
+                console.log(resultText);
+                
+                // Update results display if exists
+                let resultsDiv = document.getElementById('filterResults');
+                if (!resultsDiv) {
+                    resultsDiv = document.createElement('div');
+                    resultsDiv.id = 'filterResults';
+                    resultsDiv.className = 'text-muted mt-2 fw-bold';
+                    document.querySelector('.filter-section').appendChild(resultsDiv);
+                }
+                resultsDiv.textContent = resultText;
+            }
+
+            function updateFilterResults(visibleRows) {
+                const totalRows = document.querySelectorAll('#postsTable tbody tr').length;
+                
+                // Show toast with filter results
+                if (visibleRows < totalRows) {
+                    showToast(`Filtered: ${visibleRows} of ${totalRows} posts`, 'info');
+                }
+            }
+
+            function clearFilters() {
+                document.getElementById('languageFilter').value = '';
+                document.getElementById('statusFilter').value = '';
+                document.getElementById('categoryFilter').value = '';
+                
+                // Show all rows
+                const rows = document.querySelectorAll('#postsTable tbody tr');
+                rows.forEach(row => {
+                    row.style.display = '';
+                });
+                
+                showToast('Filters cleared', 'info');
             }
         </script>
     </body>
